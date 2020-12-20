@@ -1,28 +1,41 @@
+
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import {request} from "./network";
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  created: function() {
+     request({
+      url:"/nav",
+    }).then(value => {
+      this.$store.commit("muChannels",value.data.result)
+      this.$store.commit("show",value.data.result)
+
+    })
+  },
+  mounted() {
+    window.onresize=function (){
+        location.reload()
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
+*{
+  margin: 0;
+  padding: 0;
 }
+li{
+  list-style: none;
+}
+
 </style>

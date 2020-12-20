@@ -1,4 +1,3 @@
-
 <template>
   <div id="app">
     <router-view></router-view>
@@ -11,18 +10,18 @@ import {request} from "./network";
 
 export default {
   name: 'App',
-  created: function() {
-     request({
-      url:"/nav",
+  created() {
+    request({
+      url: "/json/nav.json",
     }).then(value => {
-      this.$store.commit("muChannels",value.data.result)
-      this.$store.commit("show",value.data.result)
+      this.$store.commit("muChannels", value.data.result)
+      this.$store.commit("show", value.data.result)
 
     })
   },
   mounted() {
-    window.onresize=function (){
-        location.reload()
+    window.onresize = function () {
+      location.reload()
     }
   }
 }
@@ -30,11 +29,12 @@ export default {
 
 <style>
 
-*{
+* {
   margin: 0;
   padding: 0;
 }
-li{
+
+li {
   list-style: none;
 }
 

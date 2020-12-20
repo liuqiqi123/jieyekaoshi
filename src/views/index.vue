@@ -1,9 +1,7 @@
 <template>
   <div>
-
     <vNav></vNav>
     <BodyData v-for="(item,index) in title" :key="index" :Item="item"></BodyData>
-
   </div>
 </template>
 
@@ -20,7 +18,7 @@ name: "index",
   methods:{
     bodyData(){
       request({
-        url:"/news"
+        url:"/json/news.json"
       }).then((value)=>{
         this.title=value.data.result.list
       })

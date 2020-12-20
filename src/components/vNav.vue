@@ -55,7 +55,6 @@ name: "vNav",
 }
 li{
   flex: 1;
-  /*width: 44px;*/
   line-height: 44px;
   text-align: center;
 }
